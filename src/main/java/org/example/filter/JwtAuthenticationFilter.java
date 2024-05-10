@@ -19,9 +19,7 @@ import java.io.IOException;
 @AllArgsConstructor
 @Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-
     private final JWTUtil jwtUtil;
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
@@ -38,7 +36,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             response.getWriter().write("Unauthorized");
         }
     }
-
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {

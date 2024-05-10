@@ -1,5 +1,6 @@
 package org.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
+    @JsonIgnoreProperties({"password", "role", "email"})
     private User user;
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<OrderItem> orderItems;

@@ -28,7 +28,7 @@ public class JWTUtil {
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
-                .claim("email", user.getEmail())
+                .claim("role", user.getRole())
                 .compact();
     }
 
